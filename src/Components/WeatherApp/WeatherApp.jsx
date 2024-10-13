@@ -16,6 +16,7 @@ const WeatherApp = () => {
   let api_key = "41635e6bed880627aa758c6171a0548a";
 
   const [wicon, setWicon] = React.useState(cloud_icon);
+  const [errorMessage, setErrorMessage] = React.useState("");
 
   const search = async () => {
     const element = document.getElementsByClassName("cityInput");
@@ -30,6 +31,14 @@ const WeatherApp = () => {
     const wind = document.getElementsByClassName("wind-rate");
     const temp = document.getElementsByClassName("weather-temp");
     const location = document.getElementsByClassName("weather-location");
+
+    if (data.cod === "404") {
+      setErrorMessage("Please enter a correct city name");
+      setTimeout(() => {
+        setErrorMessage("");
+      }, 2000);
+      return;
+    }
 
     humidity[0].innerHTML = data.main.humidity + "%";
     wind[0].innerHTML = data.wind.speed + " km/h";
@@ -68,6 +77,7 @@ const WeatherApp = () => {
             <img src={search_icon} alt=""/>
         </div>
       </div>
+      {errorMessage && <div className="error-message">{errorMessage}</div>}
       <div className="weather-image">
         <img src={wicon} alt=""/>
       </div>

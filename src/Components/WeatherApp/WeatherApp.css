@@ -5,6 +5,7 @@
     margin-top: 75px;
     border-radius: 12px;
     background-image: linear-gradient(180deg, #130754 0%, #3b2f80 100%);
+    position: relative; /* Add this to position the error message absolutely within the container */
 }
 
 .top-bar{
@@ -89,4 +90,17 @@
 
 .icon{
     margin-top: 10px;
+}
+
+.error-message {
+    color: white;
+    font-size: 20px;
+    position: absolute; /* Position the error message absolutely */
+    top: 10px; /* Adjust the top position as needed */
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: rgba(255, 0, 0, 0.7); /* Optional: Add a background color for better visibility */
+    padding: 10px;
+    border-radius: 5px;
+    z-index: 1000; /* Ensure the error message is on top */
 }
