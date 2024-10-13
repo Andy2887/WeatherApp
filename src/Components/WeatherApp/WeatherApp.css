@@ -104,3 +104,28 @@
     border-radius: 5px;
     z-index: 1000; /* Ensure the error message is on top */
 }
+
+.welcome-message {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    text-align: center;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent background */
+    padding: 20px; /* Padding for better spacing */
+    border-radius: 10px; /* Rounded corners */
+}
+
+.welcome-message h1 {
+    font-size: 36px;
+    margin-bottom: 20px;
+}
+
+.welcome-message p {
+    font-size: 24px;
+}
