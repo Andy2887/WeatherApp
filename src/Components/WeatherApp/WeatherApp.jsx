@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import './WeatherApp.css';
 
 import search_icon from '../Assets/search.png';
@@ -13,9 +13,28 @@ import drizzle_icon from '../Assets/drizzle.png';
 const WeatherApp = () => {
   let api_key = "41635e6bed880627aa758c6171a0548a";
 
-  const [wicon, setWicon] = React.useState(cloud_icon);
-  const [errorMessage, setErrorMessage] = React.useState("");
-  const [weatherData, setWeatherData] = React.useState(null);
+  const [wicon, setWicon] = useState(cloud_icon);
+  const [errorMessage, setErrorMessage] = useState("");
+  const [weatherData, setWeatherData] = useState(null);
+  const [isNight, setIsNight] = useState(false);
+
+  useEffect(() => {
+    const hour = new Date().getHours();
+    setIsNight(hour < 6 || hour >= 18); // Assuming night time is from 6 PM to 6 AM
+  }, []);
+
+  useEffect(() => {
+    const inputElement = document.querySelector(".cityInput");
+    const handleKeyPress = (event) => {
+      if (event.key === "Enter") {
+        search();
+      }
+    };
+    inputElement.addEventListener("keypress", handleKeyPress);
+    return () => {
+      inputElement.removeEventListener("keypress", handleKeyPress);
+    };
+  }, []);
 
   const search = async () => {
     const element = document.getElementsByClassName("cityInput");
@@ -55,10 +74,10 @@ const WeatherApp = () => {
   };
 
   return (
-    <div className='container'>
+    <div className={`container ${isNight ? 'night' : ''}`}>
       <div className='top-bar'>
         <input type="text" className="cityInput" placeholder="Search" />
-        <div className="search-icon" onClick={() => { search() }}>
+        <div className="search-icon" onClick={search}>
           <img src={search_icon} alt="" />
         </div>
       </div>
