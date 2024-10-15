@@ -18,6 +18,22 @@ WeatherApp.css: Contains the CSS styles for the WeatherApp component.
 
 Assets: Contains the image assets used in the application.
 
+## Installation
+
+1. Clone the repository:
+    ```sh
+    git clone https://https://github.com/Andy2887/WeatherApp
+    ```
+2. Navigate to the project directory
+
+## Running the Application
+
+1. Start the development server:
+    ```sh
+    npm start
+    ```
+2. Open your browser and navigate to `http://localhost:3000`.
+
 ## API Key
 
 The application uses the OpenWeatherMap API to fetch weather data. You need to replace the placeholder API key in the WeatherApp.jsx file with your own API key.
