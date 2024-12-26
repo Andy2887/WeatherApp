@@ -133,3 +133,14 @@
 .welcome-message p {
     font-size: 24px;
 }
+
+.weather-info {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 1s ease-out, transform 1s ease-out;
+  }
+  
+.weather-info.show {
+    opacity: 1;
+    transform: translateY(0);
+}
